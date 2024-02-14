@@ -1,7 +1,9 @@
 import { Inter as FontSans } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -22,7 +24,15 @@ export default function RootLayout({ children }) {
           fontSans.variable
         )}
       >
-        {children}
+        <nav className="flex flex-row items-center gap-5 m-5 p-2 bg-zinc-200 rounded-md">
+          <Link href="/" className="text-orange-800 font-bold text-2xl">
+            Nebula Blogs
+          </Link>
+          <Link href="/">Home</Link>
+          <Link href="/create-blog">Create New Blog</Link>
+        </nav>
+        <main>{children}</main>
+        <Toaster />
       </body>
     </html>
   );
