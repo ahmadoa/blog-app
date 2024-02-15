@@ -46,7 +46,6 @@ export default function CreationForm() {
           id="title"
           type="text"
           placeholder="Title"
-          s
           className="w-1/3"
         />
         <p className="text-sm text-red-500">{errors.title?.message}</p>
