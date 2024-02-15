@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         )}
       >
         <nav className="flex flex-row items-center gap-5 m-5 p-2 bg-zinc-200 rounded-md">
-          <Link href="/" className="text-orange-800 font-bold text-2xl">
+          <Link href="/" className="text-orange-800 font-bold text-xl">
             Nebula Blogs
           </Link>
           <Link href="/">Home</Link>

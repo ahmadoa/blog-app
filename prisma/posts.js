@@ -7,8 +7,15 @@ export async function addPost(data) {
 }
 
 export async function getAllPosts() {
-  const posts = await prisma.post.findMany();
-  return posts;
+  try {
+    const posts = await prisma.post.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    return { props: { posts }, revalidate: 30 };
+  } catch (error) {
+    console.error("erroc fetching posts:", error);
+    return null;
+  }
 }
 
 export async function getPostById(id) {
@@ -17,7 +24,7 @@ export async function getPostById(id) {
       id,
     },
   });
-  return post;
+  return { props: { post }, revalidate: 60 };
 }
 
 export async function deletePost(id) {
