@@ -11,6 +11,7 @@ export default function AllPosts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // Fetch all posts
   const getPosts = async () => {
     try {
       const data = await getAllPosts();
@@ -24,6 +25,7 @@ export default function AllPosts() {
 
   const router = useRouter();
 
+  // Delete a post
   const PostDeletion = async (id) => {
     try {
       await deletePost(id);

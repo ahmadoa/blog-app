@@ -19,6 +19,7 @@ export default function SinglePost({ postId }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
+  // Fetch a single post
   const getSinglePost = async (id) => {
     try {
       const data = await getPostById(id);
@@ -32,6 +33,7 @@ export default function SinglePost({ postId }) {
 
   const router = useRouter();
 
+  // Delete a post
   const PostDeletion = async (id) => {
     try {
       await deletePost(id);
@@ -46,14 +48,17 @@ export default function SinglePost({ postId }) {
     getSinglePost(postId);
   }, []);
 
+  // If the post is still loading, display a loading message
   if (loading) {
     return <p>Loading...</p>;
   }
 
+  // If there is an error fetching the post, display the error message
   if (error) {
     return <p>Error: {error.message}</p>;
   }
 
+  // If the post is not found, display a message
   if (!post) {
     return <p>Data not found.</p>;
   }

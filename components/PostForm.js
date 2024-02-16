@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { addPost } from "@/prisma/posts";
 import { toast } from "sonner";
 
+// Define a schema using Yup library for form validation
 const schema = yup
   .object({
     title: yup.string().required("Title is required"),
@@ -17,6 +18,7 @@ const schema = yup
   .required();
 
 export default function CreationForm() {
+  // Use react-hook-form to handle form state and validation
   const {
     register,
     handleSubmit,
@@ -26,6 +28,7 @@ export default function CreationForm() {
     resolver: yupResolver(schema),
   });
 
+  // Function to handle form submission
   const onSubmit = async (data) => {
     try {
       await addPost(data);
